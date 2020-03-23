@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<properties resource="jdbc.properties" />
+	<classPathEntry
+		location="D:\Program Files\maven-repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar" />
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<jdbcConnection driverClass="${jdbc.driverClass}"
+			connectionURL="${jdbc.url}" userId="${jdbc.user}" password="${jdbc.password}">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 设置生成实体类的保存位置 -->
+		<javaModelGenerator targetPackage="com.autolight.entity"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 设置XXDao.xml生成的位置Mapper.xml -->
+		<sqlMapGenerator targetPackage="com.autolight.dao"
+			targetProject=".\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<table schema="DB2ADMIN" tableName="tb_user" domainObjectName="User">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		
+		<table schema="DB2ADMIN" tableName="tb_dianlustatus" domainObjectName="Dianlustatus">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_light" domainObjectName="Light">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_lighttype" domainObjectName="Lighttype">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_orderofrepair" domainObjectName="Orderofrepair">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_orderofreply" domainObjectName="Orderofreply">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_replytype" domainObjectName="Replytype">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_room" domainObjectName="Room">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+
+	</context>
+</generatorConfiguration>
