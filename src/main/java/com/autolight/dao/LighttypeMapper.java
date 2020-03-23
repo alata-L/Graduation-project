@@ -1,10 +1,10 @@
-package com.autolight.service;
+package com.autolight.dao;
 
 import java.util.List;
 
 import com.autolight.entity.Lighttype;
 
-public interface LighttypeService {
+public interface LighttypeMapper {
 
 	public List<Lighttype> findLighttypeAll();
 
@@ -13,5 +13,7 @@ public interface LighttypeService {
 	public Lighttype findLighttypeByID(Integer lighttype_id);
 
 	public void deleteLighttype(Integer[] id);
+
+	public void updateLighttype(Lighttype lighttype);
 
 }

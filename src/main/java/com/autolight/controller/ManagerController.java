@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.autolight.entity.Dianlustatus;
+import com.autolight.entity.Lighttype;
 import com.autolight.entity.Orderofrepair;
 import com.autolight.entity.Replytype;
 import com.autolight.entity.Room;
 import com.autolight.entity.User;
 import com.autolight.service.DianlustatusService;
+import com.autolight.service.LighttypeService;
 import com.autolight.service.OrderofrepairService;
 import com.autolight.service.ReplytypeService;
 import com.autolight.service.RoomService;
@@ -197,6 +199,7 @@ public class ManagerController {
 	
 	@Resource 
 	private DianlustatusService dianlustatusservice;
+	
 	@RequestMapping("/dianlustatuslist")
 	@ResponseBody
 	public List<Dianlustatus>  findDianlustatusAll() {
@@ -243,7 +246,54 @@ public class ManagerController {
 		return result;
 	}
 	
-
+	@Resource
+	private LighttypeService lighttypeservice;
+	
+	@RequestMapping("/lighttypelist")
+	@ResponseBody
+	public List<Lighttype>  findLighttypeAll() {
+		List<Lighttype> list = lighttypeservice.findLighttypeAll();
+		return list;
+	}
+	
+	@RequestMapping("/saveLighttype")
+	@ResponseBody
+	public Map<String, Object> saveLighttype(Lighttype lighttype) {
+		try {
+			lighttypeservice.saveLighttype(lighttype);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/findlighttypebyID")
+	@ResponseBody
+	public Lighttype findLighttypeByID(Integer ltype_id) {
+		Lighttype lighttype = lighttypeservice.findLighttypeByID(ltype_id);
+		return lighttype;
+	}
+	
+	@RequestMapping("/deletelighttype")
+	@ResponseBody
+	public Map<String, Object> deleteLighttype(Integer[] id)
+	{
+		try {
+			lighttypeservice.deleteLighttype(id);
+			result.put("success",true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result.put("success",false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	
 	
 	
 	
