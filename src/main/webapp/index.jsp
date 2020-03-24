@@ -63,8 +63,10 @@
     	<div id="aa" class="easyui-accordion" style="width:193px;" data-options="border:0,multiple:true" >   
 		    <div title="系统管理" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;">   
 		       <ul>
-		       	 <li><a href="javascript:void(0)" pageUrl="usermanage.jsp">用户管理</a></li>
-		       	  <li><a href="javascript:void(0)" pageUrl="RoomManage.jsp">教室管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="usermanage.jsp">用户信息管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="RoomManage.jsp">教室灯光管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="LighttypeManage.jsp">灯泡类型管理</a></li>
+		       	  <li><a href="javascript:void(0)" pageUrl="ReplyTypeManage.jsp">修复回复类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="categroy.jsp">权限管理</a></li>
 		       </ul>
 		    </div>   
@@ -79,7 +81,7 @@
 		    <div title="修护管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
 		       	 <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">报修表单与回复</a></li>
-		       	 <li><a href="javascript:void(0)" pageUrl="NewFile.jsp">灯光情况</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="LightManage.jsp">灯光情况</a></li>
 		       </ul>
 		    </div>
 		    <div title="电路管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   

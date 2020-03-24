@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.autolight.entity.Dianlustatus;
+import com.autolight.entity.Light;
 import com.autolight.entity.Lighttype;
 import com.autolight.entity.Orderofrepair;
 import com.autolight.entity.Replytype;
 import com.autolight.entity.Room;
 import com.autolight.entity.User;
 import com.autolight.service.DianlustatusService;
+import com.autolight.service.LightService;
 import com.autolight.service.LighttypeService;
 import com.autolight.service.OrderofrepairService;
 import com.autolight.service.ReplytypeService;
@@ -293,7 +295,52 @@ public class ManagerController {
 		return result;
 	}
 	
+	@Resource
+	private LightService lightservice;
 	
+	@RequestMapping("/lightlist")
+	@ResponseBody
+	public List<Light>  findLightlistAll() {
+		List<Light> list = lightservice.findLightlistAll();
+		return list;
+	}
+	
+	@RequestMapping("/saveLight")
+	@ResponseBody
+	public Map<String, Object> saveLight(Light light) {
+		try {
+			lightservice.saveLight(light);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+
+	@RequestMapping("/findLightByID")
+	@ResponseBody
+	public Light findLightByID(Integer light_id) {
+		Light light = lightservice.findLighttypeByID(light_id);
+		return light;
+	}
+	
+	@RequestMapping("/deletelight")
+	@ResponseBody
+	public Map<String, Object> deleteLight(Integer[] id)
+	{
+		try {
+			lightservice.deleteLighttype(id);
+			result.put("success",true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result.put("success",false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
 	
 	
 	

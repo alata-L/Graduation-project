@@ -268,4 +268,53 @@
       lighttype_name = #{lighttype_name,jdbcType=VARCHAR}
     where light_id = #{light_id,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="findLightlistAll" resultType="com.autolight.entity.Light">
+		select
+		light_id,
+		room_id,
+		room_name,
+		lighttype_name
+		from
+		autolightcontrol.tb_light
+	</select>
+	
+	<insert id="saveLight" parameterType="com.autolight.entity.Light">
+			INSERT INTO autolightcontrol.tb_light
+			(room_id, room_name, lighttype_name) 
+			VALUES 
+			(#{room_id},#{room_name},#{lighttype_name})
+	</insert>
+	
+	<update id="updateLight" parameterType="com.autolight.entity.Light">
+	UPDATE autolightcontrol.tb_light
+	 SET 
+	 room_id = #{room_id},
+	 room_name = #{room_name},
+	 lighttype_name = #{lighttype_name}
+	 WHERE light_id = #{light_id}
+	</update>
+	
+	<select id="findLightByID" parameterType="int" resultType="com.autolight.entity.Light">
+	select
+	    light_id,
+		room_id,
+		room_name,
+		lighttype_name
+		from
+		autolightcontrol.tb_light
+		where light_id = #{value}
+	</select>
+	
+	
+	<delete id="deleteLight" parameterType="Integer[]">
+		delete from autolightcontrol.tb_light
+		<where>
+		   light_id
+			<foreach close=")" collection="array" item="id" open="in (" separator=",">
+ 				#{id}
+			</foreach>
+		</where>
+	</delete>
 </mapper>
