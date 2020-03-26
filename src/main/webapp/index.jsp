@@ -66,30 +66,29 @@
 		       	 <li><a href="javascript:void(0)" pageUrl="usermanage.jsp">用户信息管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="RoomManage.jsp">教室灯光管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="LighttypeManage.jsp">灯泡类型管理</a></li>
-		       	  <li><a href="javascript:void(0)" pageUrl="ReplyTypeManage.jsp">修复回复类型管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="ReplyTypeManage.jsp">修复回复类型管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路状态类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="categroy.jsp">权限管理</a></li>
 		       </ul>
 		    </div>   
 		    <div title="我的灯光管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
 		         <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">申请例外灯光</a></li>
-		       	 <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">申请报修</a></li>
-		       	 <li><a href="javascript:void(0)" pageUrl="NewFile.jsp">查看我的</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="Askrepair.jsp">申请报修</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="Myrepairandrequest.jsp">查看我的</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="xiu'gai'm">修改密码</a></li>
 		       </ul>
 		    </div>
 		    <div title="修护管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
-		       	 <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">报修表单与回复</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="OrderofrepairManage.jsp">报修表单与回复</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="LightManage.jsp">灯光情况</a></li>
 		       </ul>
 		    </div>
 		    <div title="电路管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
 		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">例外灯光表单与回复</a></li>
-		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">打开个别电路</a></li>
-		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">打开所有电路</a></li>
-		       	  <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">切断所有电路</a></li>
+		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">电路连通与切断</a></li>
 		       </ul>
 		    </div>
 		    <div title="数据统计" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   

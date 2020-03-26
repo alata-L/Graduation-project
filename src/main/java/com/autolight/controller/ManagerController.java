@@ -170,6 +170,16 @@ public class ManagerController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/saveask")
+	public String saveOrderofrepair1(Orderofrepair orderofrepair) {
+		System.out.println(orderofrepair.getOrderofrepair_text());
+		orderofrepairservice.saveOrderofrepair(orderofrepair);
+		return "Myrepairandrequest";
+		
+	}
+	
+	
 	@RequestMapping("/deleteorderofrepair")
 	@ResponseBody
 	public Map<String, Object> deleteOrderofrepair(Integer[] id)

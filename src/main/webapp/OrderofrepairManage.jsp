@@ -26,6 +26,10 @@
 		<a id="editBtn"href="#" class="easyui-linkbutton"data-options="iconCls:'icon-edit',plain:true">修改</a> 
 		<a id="deleteBtn" href="#" class="easyui-linkbutton"data-options="iconCls:'icon-remove',plain:true">删除</a>
 	</div>
+	
+	<div id="index_listMissionBenchmarking_datagrids_action" style="display: none;">
+	<a href="#" class="easyui-linkbutton actions editResources" data-options="iconCls:'icon-search'">维护任务资源库</a>
+    </div>
 
 	<!-- 编辑窗口 -->
 	<div id="win" class="easyui-window" title="修复申请编辑"
@@ -40,48 +44,41 @@
 		    <a id="saveBtn" href="#" class="easyui-linkbutton"data-options="iconCls:'icon-save'">保存</a>
 		</form>
 	</div>
+	
 
 	<script type="text/javascript">
 		$(function(){
 			$("#orderofrepairlist").datagrid({
 				url : "managecontroller/orderofrepairlistbypage.do",
-
-				columns : [ [ {
-					field : "orderofrepair_id",
-					title : "修复申请编号",
-					width : 100,
-					checkbox : true
-				}, 
-				{
-					field : "room_name",
-					title : "修复申请教室名称",
-					width : 150,
-				}, 
-				{
-					field : "user_id",
-					title : "修复申请人ID",
-					width : 150,
-				},
-				{
-					field : "user_name",
-					title : "修复申请人姓名",
-					width : 150,
-				},
-				{
-					field : "orderofrepair_text",
-					title : "修复申请备注",
-					width : 200,
-				},
-				{
-					field : "orderofrepair_time",
-					title : "修复申请时间",
-					width : 200,
-				}
+				columns : [ [ 
+					{field : "orderofrepair_id",title : "修复申请编号",width : 80}, 
+				    {field : "room_name",title : "修复申请教室名称",width : 80}, 
+				    {field : "user_id",title : "修复申请人ID",width : 80},
+				    {field : "user_name",title : "修复申请人姓名",width : 80},
+				    {field : "orderofrepair_text",title : "修复申请备注",width : 200,},
+				    {field : "orderofrepair_time",title : "修复申请时间",width : 200,},
+				    {
+			             field: 'opt', title: '操作', width: 100, align: 'center',
+			             formatter: function (val, row, index) {
+			             var btn = '<a class="detail" onclick="ShowDetail(\'' + row.orderofrepair_id + '\')"  href="javascript:void(0)">查看详情</a>';
+			             return btn;
+			            }
+			        }
 				] ],
+				 onLoadSuccess: function (data) {
+			          $('.detail').linkbutton({ text: '回复', plain: true, iconCls: 'icon-add' });
+			       },
 				pagination : true,
 				toolbar : "#tb"
 
 			});
+			
+			
+			ShowDetail = function (orderofrepair_id) {
+		          alert(orderofrepair_id);
+		    }
+			
+		
 			
 			$("#addBtn").click(function(){
 				$("#editForm").form("clear");
