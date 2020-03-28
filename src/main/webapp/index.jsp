@@ -88,7 +88,7 @@
 		    <div title="电路管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
 		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">例外灯光表单与回复</a></li>
-		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">电路连通与切断</a></li>
+		          <li><a href="javascript:void(0)" pageUrl="Dianlustatus.jsp">电路连通与切断</a></li>
 		       </ul>
 		    </div>
 		    <div title="数据统计" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   

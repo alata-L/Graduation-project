@@ -91,6 +91,36 @@ public class ManagerController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/updateRoomdianlustatusofconnect")
+	@ResponseBody
+	public Map<String, Object> updateRoomdianlustatusofconnect(Integer[] id) {
+		try {
+			roomservice.updateRoomdianlustatusofconnect(id);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/updateRoomdianlustatusofdisconnect")
+	@ResponseBody
+	public Map<String, Object> updateRoomdianlustatusofdisconnect(Integer[] id) {
+		try {
+			roomservice.updateRoomdianlustatusofdisconnect(id);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	
 
 	@Resource
 	private ReplytypeService replytypeservice;

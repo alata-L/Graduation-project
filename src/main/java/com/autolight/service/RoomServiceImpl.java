@@ -42,4 +42,14 @@ public class RoomServiceImpl implements RoomService{
 		roomMapper.deleteRoom(id);
 	}
 
+	public void updateRoomdianlustatusofconnect(Integer[] id) {
+		// TODO Auto-generated method stub
+		roomMapper.updateRoomdianlustatusofconnect(id);
+	}
+
+	public void updateRoomdianlustatusofdisconnect(Integer[] id) {
+		// TODO Auto-generated method stub
+		roomMapper.updateRoomdianlustatusofdisconnect(id);
+	}
+
 }

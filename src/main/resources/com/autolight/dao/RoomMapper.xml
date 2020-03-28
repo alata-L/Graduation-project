@@ -309,6 +309,29 @@
 		where room_id = #{value}
 	</select>
 	
+	<update id="updateRoomdianlustatusofconnect" parameterType="Integer[]">
+	UPDATE autolightcontrol.tb_room
+	 SET 
+	 dianlustatus_name = "连通"
+	 <where>
+	  room_id
+			<foreach close=")" collection="array" item="id" open="in (" separator=",">
+ 				#{id}
+			</foreach>
+	 </where>
+	</update>
+	
+	<update id="updateRoomdianlustatusofdisconnect" parameterType="Integer[]">
+	UPDATE autolightcontrol.tb_room
+	 SET 
+	 dianlustatus_name = "断开"
+	 <where>
+	  room_id
+			<foreach close=")" collection="array" item="id" open="in (" separator=",">
+ 				#{id}
+			</foreach>
+	 </where>
+	</update>
 	
 	<delete id="deleteRoom" parameterType="Integer[]">
 		delete from autolightcontrol.tb_room

@@ -15,4 +15,8 @@ public interface RoomService {
 
 	public void deleteRoom(Integer[] id);
 
+	public void updateRoomdianlustatusofconnect(Integer[] id);
+
+	public void updateRoomdianlustatusofdisconnect(Integer[] id);
+
 }

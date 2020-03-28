@@ -16,4 +16,8 @@ public interface RoomMapper {
 
 	public void deleteRoom(Integer[] id);
 
+	public void updateRoomdianlustatusofdisconnect(Integer[] id);
+
+	public void updateRoomdianlustatusofconnect(Integer[] id);
+
 }
