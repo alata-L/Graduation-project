@@ -68,6 +68,8 @@
 		       	 <li><a href="javascript:void(0)" pageUrl="LighttypeManage.jsp">灯泡类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="ReplyTypeManage.jsp">修复回复类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路状态类型管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="OrderofrepairManage.jsp">报修订单管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="OrderofreplyManage.jsp">回复管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="categroy.jsp">权限管理</a></li>
 		       </ul>
 		    </div>   
@@ -81,14 +83,14 @@
 		    </div>
 		    <div title="修护管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
-		       	 <li><a href="javascript:void(0)" pageUrl="OrderofrepairManage.jsp">报修表单与回复</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="OrderofreplyManage.jsp">报修表单与回复</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="LightManage.jsp">灯光情况</a></li>
 		       </ul>
 		    </div>
 		    <div title="电路管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
 		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">例外灯光表单与回复</a></li>
-		          <li><a href="javascript:void(0)" pageUrl="Dianlustatus.jsp">电路连通与切断</a></li>
+		          <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路连通与切断</a></li>
 		       </ul>
 		    </div>
 		    <div title="数据统计" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   

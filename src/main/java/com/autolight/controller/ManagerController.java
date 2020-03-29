@@ -5,15 +5,20 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.autolight.entity.Dianlustatus;
 import com.autolight.entity.Light;
 import com.autolight.entity.Lighttype;
 import com.autolight.entity.Orderofrepair;
+import com.autolight.entity.Orderofreply;
 import com.autolight.entity.Replytype;
 import com.autolight.entity.Room;
 import com.autolight.entity.User;
@@ -21,6 +26,7 @@ import com.autolight.service.DianlustatusService;
 import com.autolight.service.LightService;
 import com.autolight.service.LighttypeService;
 import com.autolight.service.OrderofrepairService;
+import com.autolight.service.OrderofreplyService;
 import com.autolight.service.ReplytypeService;
 import com.autolight.service.RoomService;
 import com.github.pagehelper.PageHelper;
@@ -191,6 +197,7 @@ public class ManagerController {
 	@ResponseBody
 	public Map<String, Object> saveOrderofrepair(Orderofrepair orderofrepair) {
 		try {
+			System.out.println(orderofrepair.getOrderofrepair_id());
 			orderofrepairservice.saveOrderofrepair(orderofrepair);
 			result.put("success", true);
 		} catch (Exception e) {
@@ -203,7 +210,6 @@ public class ManagerController {
 	
 	@RequestMapping("/saveask")
 	public String saveOrderofrepair1(Orderofrepair orderofrepair) {
-		System.out.println(orderofrepair.getOrderofrepair_text());
 		orderofrepairservice.saveOrderofrepair(orderofrepair);
 		return "Myrepairandrequest";
 		
@@ -372,6 +378,111 @@ public class ManagerController {
 	{
 		try {
 			lightservice.deleteLighttype(id);
+			result.put("success",true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result.put("success",false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@Resource
+	private OrderofreplyService orderofreplyService;
+
+	
+	
+	@RequestMapping("/findOrderofreply")
+	@ResponseBody
+	public Map<String, Object> findOrderofreply( HttpSession session,@RequestParam("orderofrepair_id")Integer orderofrepair_id) {
+		try {
+			Orderofrepair orderofrepair = orderofrepairservice.findOrderofrepairByID(orderofrepair_id);
+			session.setAttribute("orderofrepair", orderofrepair);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/saveOrderofreply")
+	@ResponseBody
+	public Map<String, Object> saveOrderofreply( HttpSession session,@RequestParam("replyuser_id")Integer replyuser_id,@RequestParam("replyuser_name")String replyuser_name,@RequestParam("replytype_name")String replytype_name) {
+		try {
+			Orderofrepair orderofrepair =(Orderofrepair) session.getAttribute("orderofrepair");
+			Orderofreply orderofreply = new Orderofreply();
+			orderofreply.setOrderofrepair_id(orderofrepair.getOrderofrepair_id());
+			orderofreply.setRoom_name(orderofrepair.getRoom_name());
+			orderofreply.setUser_id(orderofrepair.getUser_id());
+			orderofreply.setUser_name(orderofrepair.getUser_name());
+			orderofreply.setOrderofrepair_text(orderofrepair.getOrderofrepair_text());
+			System.out.println(orderofrepair.getOrderofrepair_time());
+			orderofreply.setOrderofrepair_time(orderofrepair.getOrderofrepair_time());
+			orderofreply.setReplyuser_id(replyuser_id);
+			orderofreply.setReplyuser_name(replyuser_name);
+			orderofreply.setReplytype_name(replytype_name);
+			orderofreplyService.saveOrderofreply(orderofreply);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/orderofreplylist")
+	@ResponseBody
+	public List<Orderofreply>  findOrderofreplylistAll(){
+		List<Orderofreply> list = orderofreplyService. findOrderofreplylistAll();
+		return list;
+	}
+	
+	@RequestMapping("/orderofreplylistByPage")
+	@ResponseBody
+	public Map<String, Object> orderofreplylistByPage(Integer page, Integer rows) {
+		PageHelper.startPage(page, rows);
+		List<Orderofreply> list = orderofreplyService. findOrderofreplylistAll();
+		PageInfo<Orderofreply> pageInfo = new PageInfo<Orderofreply>(list);
+		long total = pageInfo.getTotal();
+		List<Orderofreply> orderofreplylis = pageInfo.getList();
+		result.put("total", total);
+		result.put("rows", orderofreplylis);
+		return result;
+	}
+	
+	@RequestMapping("/findOrderofreplyByID")
+	@ResponseBody
+	public Orderofreply findOrderofreplyByID(Integer orderofreply_id) {
+		System.out.println(orderofreply_id);
+		Orderofreply orderofreply = orderofreplyService.findOrderofreplyByID(orderofreply_id);
+		return orderofreply;
+	}
+	
+	
+	@RequestMapping("/saveupdatereply")
+	@ResponseBody
+	public Map<String, Object> saveupdateReply(Orderofreply orderofreply) {
+		try {
+			orderofreplyService.saveupdateReply(orderofreply);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+
+	@RequestMapping("/deleteOrderreply")
+	@ResponseBody
+	public Map<String, Object> deleteOrderreply(Integer[] id)
+	{
+		try {
+			orderofreplyService.deleteOrderreply(id);
 			result.put("success",true);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
