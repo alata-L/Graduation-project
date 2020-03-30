@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>修复申请管理</title>
+<title>修复申请的回复</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -71,7 +71,6 @@
 			
 			
 			replyofRepair = function (orderofrepair_id) {
-				
 				 $.ajax({
 		                type:"POST",
 		                url:"managecontroller/findOrderofreply.do",
@@ -79,7 +78,6 @@
 		                dataType:"json",
 		                success:function(data){
 		                    if(data.success){
-		                    	//$.messager.alert("提示","删除成功","info");
 		                    	$("#replyForm").form("clear");
 		        				$("#win").window("open");
 		                    }else{//删除失败

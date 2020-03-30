@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.autolight.entity.Asklight;
 import com.autolight.entity.Dianlustatus;
 import com.autolight.entity.Light;
 import com.autolight.entity.Lighttype;
@@ -22,6 +23,7 @@ import com.autolight.entity.Orderofreply;
 import com.autolight.entity.Replytype;
 import com.autolight.entity.Room;
 import com.autolight.entity.User;
+import com.autolight.service.AsklightService;
 import com.autolight.service.DianlustatusService;
 import com.autolight.service.LightService;
 import com.autolight.service.LighttypeService;
@@ -209,7 +211,7 @@ public class ManagerController {
 	}
 	
 	@RequestMapping("/saveask")
-	public String saveOrderofrepair1(Orderofrepair orderofrepair) {
+	public String saveAskrepair(Orderofrepair orderofrepair) {
 		orderofrepairservice.saveOrderofrepair(orderofrepair);
 		return "Myrepairandrequest";
 		
@@ -419,7 +421,6 @@ public class ManagerController {
 			orderofreply.setUser_id(orderofrepair.getUser_id());
 			orderofreply.setUser_name(orderofrepair.getUser_name());
 			orderofreply.setOrderofrepair_text(orderofrepair.getOrderofrepair_text());
-			System.out.println(orderofrepair.getOrderofrepair_time());
 			orderofreply.setOrderofrepair_time(orderofrepair.getOrderofrepair_time());
 			orderofreply.setReplyuser_id(replyuser_id);
 			orderofreply.setReplyuser_name(replyuser_name);
@@ -457,7 +458,6 @@ public class ManagerController {
 	@RequestMapping("/findOrderofreplyByID")
 	@ResponseBody
 	public Orderofreply findOrderofreplyByID(Integer orderofreply_id) {
-		System.out.println(orderofreply_id);
 		Orderofreply orderofreply = orderofreplyService.findOrderofreplyByID(orderofreply_id);
 		return orderofreply;
 	}
@@ -491,6 +491,23 @@ public class ManagerController {
 			result.put("msg", e.getMessage());
 		}
 		return result;
+	}
+	
+	@Resource
+	private AsklightService asklightService;
+	
+	@RequestMapping("/saveasklight")
+	public String saveAsklight(Asklight asklight) {
+		asklightService.saveAsklight(asklight);
+		return "Myrepairandrequest";
+		
+	}
+	
+	@RequestMapping("/asklightlist")
+	@ResponseBody
+	public List<Asklight>  findAsklightAll(){
+		List<Asklight> list = asklightService.findAsklightAll();
+		return list;
 	}
 	
 	

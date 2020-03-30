@@ -27,35 +27,56 @@ if(a.getAttribute("title") == title) a.disabled = false;
 <body>
 
 	<div class="form_content">
-    <form id="askrepairform" action="${pageContext.request.contextPath }/managecontroller/saveask.do" method="post">
+    <form id="asklightfrom" name="asklightfrom" action="#" method="post">
      <fieldset>
-        <legend>修复申请表</legend>
+        <legend>例外灯光申请表</legend>
         <div class="form-row">
-            <div class="field-label"><label for="field1">修复教室名称：</label>:</div>
-            <div class="field-widget"><input name="room_name" id="room_name" class="required" title="修复教室名称" /></div>
+            <div class="field-label"><label for="field1">教室名称：</label>:</div>
+            <div class="field-widget"><input name="room_name" id="room_name" class="required" title="Enter your name" /></div>
         </div>
         
         <div class="form-row">
             <div class="field-label"><label for="field2">用户ID：</label>:</div>
-            <div class="field-widget"><input name="user_id" id="user_id" class="required" title="用户ID" /></div>
+            <div class="field-widget"><input name="user_id" id="user_id" class="required" title="Enter your name" /></div>
         </div>
         
         <div class="form-row">
             <div class="field-label"><label for="field2">用户姓名：</label>:</div>
-            <div class="field-widget"><input name="user_name" id="user_name" class="required" title="用户姓名" /></div>
+            <div class="field-widget"><input name="user_name" id="user_name" class="required" title="Enter your name" /></div>
         </div>
         
         <div class="form-row">
-            <div class="field-label"><label for="field3">修复备注：</label>:</div>
-            <div class="field-widget"><textarea id="orderofrepair_text" name="orderofrepair_text" class="required" title="修复备注"></textarea></div>
+            <div class="field-label"><label for="field3">申请凭证：</label>:</div>
+            <div class="field-widget"><textarea id="orderofrepair_text" name="orderofrepair_text" class="required"></textarea></div>
         </div>
         
         
     </fieldset>  
-    <input type="submit" class="submit" value="Submit" /> <input class="reset" type="button" value="Reset" onclick="valid.reset(); return false" />
+    <input type="button" class="submit" value="提交" onclick="saveAsklight()" /> <input class="reset" type="button" value="重置" onclick="valid.reset(); return false" />
     </form>
     </div>
+    
+    
+    
+    
     <script type="text/javascript">
+        function saveAsklight(){
+        	$.ajax({
+                type:"POST",
+                url:"managecontroller/saveasklight.do",
+                data:$('#asklightfrom').serialize(),
+                dataType:"json",
+                success:function(data){
+                    if(data.success){
+                    	$.messager.alert("提示","提交成功","info");
+                    }else{
+                    	$.messager.alert("提示","提交失败："+data.msg,"error");
+                    };
+                },
+            });
+        	
+        }
+    
         function formCallback(result, form) {
             window.status = "valiation callback for form '" + form.id + "': result = " + result;
         }

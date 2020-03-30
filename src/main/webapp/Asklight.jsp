@@ -22,36 +22,35 @@ if(a.getAttribute("title") == title) a.disabled = false;
 //-->
 //]]>
 </script>
-<link title="style1" rel="stylesheet" href="css/style3.css" type="text/css" />
+<link title="style1" rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 
 	<div class="form_content">
-    <form id="askrepairform" action="${pageContext.request.contextPath }/managecontroller/saveask.do" method="post">
-     <fieldset>
-        <legend>修复申请表</legend>
+    <form id="asklightform" action="${pageContext.request.contextPath }/managecontroller/saveasklight.do" method="post">
+    <fieldset>
+        <legend>例外灯光申请表</legend>
         <div class="form-row">
-            <div class="field-label"><label for="field1">修复教室名称：</label>:</div>
-            <div class="field-widget"><input name="room_name" id="room_name" class="required" title="修复教室名称" /></div>
+            <div class="field-label"><label for="field1">教室名称：</label>:</div>
+            <div class="field-widget"><input name="room_name" id="room_name" class="required" title="教室名称" /></div>
         </div>
         
         <div class="form-row">
             <div class="field-label"><label for="field2">用户ID：</label>:</div>
             <div class="field-widget"><input name="user_id" id="user_id" class="required" title="用户ID" /></div>
         </div>
-        
         <div class="form-row">
             <div class="field-label"><label for="field2">用户姓名：</label>:</div>
             <div class="field-widget"><input name="user_name" id="user_name" class="required" title="用户姓名" /></div>
         </div>
-        
         <div class="form-row">
-            <div class="field-label"><label for="field3">修复备注：</label>:</div>
-            <div class="field-widget"><textarea id="orderofrepair_text" name="orderofrepair_text" class="required" title="修复备注"></textarea></div>
+            <div class="field-label"><label for="field3">申请备注：</label>:</div>
+            <div class="field-widget"><textarea id="asklight_text" name="asklight_text" class="required"></textarea></div>
         </div>
         
         
-    </fieldset>  
+    </fieldset>
+    
     <input type="submit" class="submit" value="Submit" /> <input class="reset" type="button" value="Reset" onclick="valid.reset(); return false" />
     </form>
     </div>

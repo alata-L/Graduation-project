@@ -30,7 +30,12 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<table schema="DB2ADMIN" tableName="tb_user" domainObjectName="User">
+		<table schema="DB2ADMIN" tableName="tb_user" domainObjectName="User" 
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
@@ -38,49 +43,109 @@
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
 		
-		<table schema="DB2ADMIN" tableName="tb_dianlustatus" domainObjectName="Dianlustatus">
+		<table schema="DB2ADMIN" tableName="tb_dianlustatus" domainObjectName="Dianlustatus"
+		    enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
-		<table schema="DB2ADMIN" tableName="tb_light" domainObjectName="Light">
+		<table schema="DB2ADMIN" tableName="tb_light" domainObjectName="Light"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
-		<table schema="DB2ADMIN" tableName="tb_lighttype" domainObjectName="Lighttype">
+		<table schema="DB2ADMIN" tableName="tb_lighttype" domainObjectName="Lighttype"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
-		<table schema="DB2ADMIN" tableName="tb_orderofrepair" domainObjectName="Orderofrepair">
+		<table schema="DB2ADMIN" tableName="tb_orderofrepair" domainObjectName="Orderofrepair"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
-		<table schema="DB2ADMIN" tableName="tb_orderofreply" domainObjectName="Orderofreply">
+		<table schema="DB2ADMIN" tableName="tb_orderofreply" domainObjectName="Orderofreply"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
-		<table schema="DB2ADMIN" tableName="tb_replytype" domainObjectName="Replytype">
+		<table schema="DB2ADMIN" tableName="tb_replytype" domainObjectName="Replytype"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table>
-		<table schema="DB2ADMIN" tableName="tb_room" domainObjectName="Room">
+		<table schema="DB2ADMIN" tableName="tb_asklight" domainObjectName="Asklight"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		
+		<table schema="DB2ADMIN" tableName="tb_replyasklight" domainObjectName="Replyasklight"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
+			<columnOverride column="DATE_FIELD" property="startDate" />
+			<ignoreColumn column="FRED" />
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table>
+		<table schema="DB2ADMIN" tableName="tb_room" domainObjectName="Room"
+			enableCountByExample="false"
+	        enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	        enableSelectByExample="false"
+	        selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2" identity="true" />
 			<columnOverride column="DATE_FIELD" property="startDate" />
