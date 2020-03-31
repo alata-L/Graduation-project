@@ -63,33 +63,7 @@
 			});
 			
 		
-			$("connectBtn").click(function() {
-				var rows = $("#roomlist").datagrid("getSelections");
-				if (rows.length == 0) {
-					$.messager.alert("提示", "连通操作至少选择一行", "warning");
-					return;
-				}
-				$.messager.confirm("提示", "确认连通吗?", function(value) {
-					if (value) {
-						var idStr = "";
-						$(rows).each(function(i) {
-							idStr += ("id=" + rows[i].room_id + "&");
-						});
-						idStr = idStr.substring(0,idStr.length-1);
-						$.post("managecontroller/updateRoomdianlustatusofconnect.do",idStr,function(data){
-  							if(data.success){
-  	  							//刷新datagrid
-  	  							$("#roomlist").datagrid("reload");
-  	  							
-  	  							$.messager.alert("提示","连通成功","info");
-  	  						}else{
-  	  							$.messager.alert("提示","连通失败："+data.msg,"error");
-  	  						}
-  						},"json");
-					}
-
-				});
-			 });
+			
 			
 			$("#disconnectBtn").click(function() {
 				var rows = $("#roomlist").datagrid("getSelections");
@@ -112,6 +86,35 @@
   	  							$.messager.alert("提示","断开成功","info");
   	  						}else{
   	  							$.messager.alert("提示","断开失败："+data.msg,"error");
+  	  						}
+  						},"json");
+					}
+
+				});
+			 });
+			
+			
+			$("#connectBtn").click(function() {
+				var rows = $("#roomlist").datagrid("getSelections");
+				if (rows.length == 0) {
+					$.messager.alert("提示", "连通操作至少选择一行", "warning");
+					return;
+				}
+				$.messager.confirm("提示", "确认连通吗?", function(value) {
+					if (value) {
+						var idStr = "";
+						$(rows).each(function(i) {
+							idStr += ("id=" + rows[i].room_id + "&");
+						});
+						idStr = idStr.substring(0,idStr.length-1);
+						$.post("managecontroller/updateRoomdianlustatusofconnect.do",idStr,function(data){
+  							if(data.success){
+  	  							//刷新datagrid
+  	  							$("#roomlist").datagrid("reload");
+  	  							
+  	  							$.messager.alert("提示","连通成功","info");
+  	  						}else{
+  	  							$.messager.alert("提示","连通失败："+data.msg,"error");
   	  						}
   						},"json");
 					}
