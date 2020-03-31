@@ -27,7 +27,7 @@
     </div>
 
 	<!-- 编辑窗口 -->
-	<div id="win" class="easyui-window" title="修复申请编辑"
+	<div id="win" class="easyui-window" title="修复申请回复"
 		style="width: 500px; height: 300px"
 		data-options="iconCls:'icon-save',modal:true,closed:true">
 		<form id="replyForm" method="post">

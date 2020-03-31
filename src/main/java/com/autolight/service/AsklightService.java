@@ -10,4 +10,10 @@ public interface AsklightService {
 
 	public List<Asklight> findAsklightAll();
 
+	public Asklight findReplylightByID(Integer asklight_id);
+
+	public void saveupdateAsklight(Asklight asklight);
+
+	public void deleteAsklight(Integer[] id);
+
 }

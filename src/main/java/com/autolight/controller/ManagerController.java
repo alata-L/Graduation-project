@@ -20,6 +20,7 @@ import com.autolight.entity.Light;
 import com.autolight.entity.Lighttype;
 import com.autolight.entity.Orderofrepair;
 import com.autolight.entity.Orderofreply;
+import com.autolight.entity.Replyasklight;
 import com.autolight.entity.Replytype;
 import com.autolight.entity.Room;
 import com.autolight.entity.User;
@@ -29,6 +30,7 @@ import com.autolight.service.LightService;
 import com.autolight.service.LighttypeService;
 import com.autolight.service.OrderofrepairService;
 import com.autolight.service.OrderofreplyService;
+import com.autolight.service.ReplyasklightService;
 import com.autolight.service.ReplytypeService;
 import com.autolight.service.RoomService;
 import com.github.pagehelper.PageHelper;
@@ -449,9 +451,9 @@ public class ManagerController {
 		List<Orderofreply> list = orderofreplyService. findOrderofreplylistAll();
 		PageInfo<Orderofreply> pageInfo = new PageInfo<Orderofreply>(list);
 		long total = pageInfo.getTotal();
-		List<Orderofreply> orderofreplylis = pageInfo.getList();
+		List<Orderofreply> orderofreplylist = pageInfo.getList();
 		result.put("total", total);
-		result.put("rows", orderofreplylis);
+		result.put("rows", orderofreplylist);
 		return result;
 	}
 	
@@ -509,6 +511,100 @@ public class ManagerController {
 		List<Asklight> list = asklightService.findAsklightAll();
 		return list;
 	}
+	
+	@RequestMapping("/asklightlistByPage")
+	@ResponseBody
+	public Map<String, Object> asklightListByPage(Integer page, Integer rows) {
+		PageHelper.startPage(page, rows);
+		List<Asklight> list = asklightService.findAsklightAll();
+		PageInfo<Asklight> pageInfo = new PageInfo<Asklight>(list);
+		long total = pageInfo.getTotal();
+		List<Asklight> asklightlist = pageInfo.getList();
+		result.put("total", total);
+		result.put("rows", asklightlist);
+		return result;
+	}
+	
+	@RequestMapping("/findreplylightByID")
+	@ResponseBody
+	public Asklight findReplylightByID(Integer asklight_id) {
+		Asklight asklight = asklightService.findReplylightByID(asklight_id);
+		return asklight;
+	}
+	
+	
+	@RequestMapping("/findreplylight")
+	@ResponseBody
+	public Map<String, Object> findReplylight( HttpSession session,@RequestParam("asklight_id")Integer asklight_id) {
+		try {
+			Asklight asklight = asklightService.findReplylightByID(asklight_id);
+			session.setAttribute("asklight", asklight);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/saveupdateasklight")
+	@ResponseBody
+	public Map<String, Object> saveupdateAsklight(Asklight asklight) {
+		try {
+			asklightService.saveupdateAsklight(asklight);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	@Resource
+	private ReplyasklightService replyasklightService;
+	
+	@RequestMapping("/savereplylight")
+	@ResponseBody
+	public Map<String, Object> saveReplylight( HttpSession session,@RequestParam("replyuser_id")Integer replyuser_id,@RequestParam("replyuser_name")String replyuser_name,@RequestParam("replytype_name")String replytype_name) {
+		try {
+			Asklight asklight =(Asklight) session.getAttribute("asklight");
+			Replyasklight replyasklight = new Replyasklight();
+			replyasklight.setAsklight_id(asklight.getAsklight_id());
+			replyasklight.setRoom_name(asklight.getRoom_name());
+			replyasklight.setUser_id(asklight.getUser_id());
+			replyasklight.setUser_name(asklight.getUser_name());
+			replyasklight.setAsklight_text(asklight.getAsklight_text());
+			replyasklight.setAsklight_time(asklight.getAsklight_time());
+			replyasklight.setReplyuser_id(replyuser_id);
+			replyasklight.setReplyuser_name(replyuser_name);
+			replyasklight.setReplytype_name(replytype_name);
+			replyasklightService.saveReplylight(replyasklight);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/deleteAsklight")
+	@ResponseBody
+	public Map<String, Object> deleteAsklight(Integer[] id)
+	{
+		try {
+			asklightService.deleteAsklight(id);
+			result.put("success",true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result.put("success",false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
 	
 	
 	

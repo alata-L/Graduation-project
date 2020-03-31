@@ -27,15 +27,15 @@
     </div>
 
 	<!-- 编辑窗口 -->
-	<div id="win" class="easyui-window" title="修复申请编辑"
+	<div id="win" class="easyui-window" title="灯光申请回复"
 		style="width: 500px; height: 300px"
 		data-options="iconCls:'icon-save',modal:true,closed:true">
 		<form id="replyForm" method="post">
 		           回复人ID：<input type="text" id="replyuser_id" name="replyuser_id" class="easyui-validatebox" data-options="required:true" /><br />
 		           回复人姓名：<input type="text" id="replyuser_name" name="replyuser_name" class="easyui-validatebox" data-options="required:true" /><br />
 		           回复类型： <select id="replytype_name" name="replytype_name" class="validate-selection" title="选择回复类型">
-                    <option>修复中</option>
-                    <option>修复成功</option>
+                    <option>同意</option>
+                    <option>拒绝</option>
                 </select><br/>
 		    <a id="saveBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
 		</form>
@@ -45,9 +45,9 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#asklightlist").datagrid({
-				url : "managecontroller/asklightlist.do",
+				url : "managecontroller/asklightlistByPage.do",
 				columns : [ [ 
-					{field : "asklight_id",title : "灯光申请编号",width : 80}, 
+					{field : "asklight_id",title : "灯光申请单编号",width : 80}, 
 				    {field : "room_name",title : "申请教室名称",width : 80}, 
 				    {field : "user_id",title : "申请人ID",width : 80},
 				    {field : "user_name",title : "申请人姓名",width : 80},
@@ -56,7 +56,7 @@
 				    {
 			             field: 'opt', title: '操作', width: 100, align: 'center',
 			             formatter: function (val, row, index) {
-			             var btn = '<a class="detail" onclick="replyofRepair(\'' + row.asklight_id + '\')"  href="javascript:void(0)">查看详情</a>';
+			             var btn = '<a class="detail" onclick="replyofLight(\'' + row.asklight_id + '\')"  href="javascript:void(0)">查看详情</a>';
 			             return btn;
 			            }
 			        }
@@ -70,18 +70,18 @@
 			});
 			
 			
-			replyofRepair = function (asklight_id) {
-				alert(asklight_id);
+			replyofLight = function (asklight_id) {
+				 alert(asklight_id);
 				 $.ajax({
 		                type:"POST",
-		                url:"managecontroller/findOrderofreply.do",
+		                url:"managecontroller/findreplylight.do",
 		                data:{"asklight_id":asklight_id},
 		                dataType:"json",
 		                success:function(data){
 		                    if(data.success){
 		                    	$("#replyForm").form("clear");
 		        				$("#win").window("open");
-		                    }else{//删除失败
+		                    }else{
 		                    	$.messager.alert("提示","回复失败："+data.msg,"error");
 		                    };
 		                },
@@ -89,7 +89,7 @@
 		        }
 			$("#saveBtn").click(function(){
 				$("#replyForm").form("submit",{
-					url:"managecontroller/saveOrderofreply.do",
+					url:"managecontroller/savereplylight.do",
 					onSubmit:function(){
 						return $("#replyForm").form("validate");
 					},

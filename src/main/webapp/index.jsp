@@ -70,6 +70,7 @@
 		       	 <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路状态类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="OrderofrepairManage.jsp">报修订单管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="OrderofreplyManage.jsp">报修回复管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="AsklightManage.jsp">灯光申请回复管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="categroy.jsp">权限管理</a></li>
 		       </ul>
 		    </div>   
@@ -89,7 +90,7 @@
 		    </div>
 		    <div title="电路管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
-		          <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">例外灯光表单与回复</a></li>
+		          <li><a href="javascript:void(0)" pageUrl="Replyasklight.jsp">灯光申请与回复</a></li>
 		          <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路连通与切断</a></li>
 		       </ul>
 		    </div>
