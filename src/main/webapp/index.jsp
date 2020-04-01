@@ -69,7 +69,7 @@
 		       	 <li><a href="javascript:void(0)" pageUrl="ReplyTypeManage.jsp">修复回复类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路状态类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="OrderofrepairManage.jsp">报修订单管理</a></li>
-		       	 <li><a href="javascript:void(0)" pageUrl="OrderofreplyManage.jsp">报修回复管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="ReplyrepairManage.jsp">报修回复管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="AsklightManage.jsp">灯光申请回复管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="categroy.jsp">权限管理</a></li>
 		       </ul>

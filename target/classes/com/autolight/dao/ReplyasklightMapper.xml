@@ -207,5 +207,68 @@
 		(asklight_id,room_name, user_id,user_name,asklight_text,asklight_time,replyuser_id,replyuser_name,replytype_name,replylight_time)
 		VALUES
 		(#{asklight_id},#{room_name},#{user_id},#{user_name},#{asklight_text},#{asklight_time},#{replyuser_id},#{replyuser_name},#{replytype_name},now())
-	</insert>
+  </insert>
+  
+   <select id="findReplyightlistAll" resultType="com.autolight.entity.Replyasklight">
+		select
+		replylight_id,
+		asklight_id,
+		room_name,
+		user_id,
+		user_name,
+		asklight_text,
+		asklight_time,
+		replyuser_id,
+		replyuser_name,
+		replytype_name,
+		replylight_time
+		from
+		autolightcontrol.tb_replyasklight
+	</select>
+	
+	<select id="findReplyasklightByID" parameterType="int" resultType="com.autolight.entity.Replyasklight">
+		select
+		replylight_id,
+		asklight_id,
+		room_name,
+		user_id,
+		user_name,
+		asklight_text,
+		asklight_time,
+		replyuser_id,
+		replyuser_name,
+		replytype_name,
+		replylight_time
+		from
+		autolightcontrol.tb_replyasklight
+		where replylight_id=#{replylight_id}
+	</select>
+	
+	<update id="updateReplyasklight" parameterType="com.autolight.entity.Replyasklight">
+	UPDATE autolightcontrol.tb_replyasklight
+		SET
+		asklight_id = #{asklight_id},
+		room_name = #{room_name},
+		user_id = #{user_id},
+		user_name = #{user_name},
+		asklight_text = #{asklight_text},
+		asklight_time = #{asklight_time},
+		asklight_id = #{asklight_id},
+		replyuser_id = #{replyuser_id},
+		replyuser_name = #{replyuser_name},
+		replytype_name = #{replytype_name},
+		replylight_time = now()
+		WHERE replylight_id = #{replylight_id}
+	</update>
+	
+		<delete id="deleteReplyasklight" parameterType="Integer[]">
+		delete from autolightcontrol.tb_replyasklight
+		<where>
+		   replylight_id
+			<foreach close=")" collection="array" item="id" open="in (" separator=",">
+ 				#{id}
+			</foreach>
+		</where>
+	</delete>
+	
 </mapper>

@@ -561,6 +561,23 @@ public class ManagerController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/deleteAsklight")
+	@ResponseBody
+	public Map<String, Object> deleteAsklight(Integer[] id)
+	{
+		try {
+			asklightService.deleteAsklight(id);
+			result.put("success",true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result.put("success",false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
 	@Resource
 	private ReplyasklightService replyasklightService;
 	
@@ -589,12 +606,41 @@ public class ManagerController {
 		return result;
 	}
 	
-	@RequestMapping("/deleteAsklight")
+	
+	
+	@RequestMapping("/replyightlist")
 	@ResponseBody
-	public Map<String, Object> deleteAsklight(Integer[] id)
+	public List<Replyasklight>  findReplyightlistAll(){
+		List<Replyasklight> list = replyasklightService.findAsklightAll();
+		return list;
+	}
+	
+	@RequestMapping("/replyightlistByPage")
+	@ResponseBody
+	public Map<String, Object> replyightlistByPage(Integer page, Integer rows) {
+		PageHelper.startPage(page, rows);
+		List<Replyasklight> list = replyasklightService.findAsklightAll();
+		PageInfo<Replyasklight> pageInfo = new PageInfo<Replyasklight>(list);
+		long total = pageInfo.getTotal();
+		List<Replyasklight> replyightlist = pageInfo.getList();
+		result.put("total", total);
+		result.put("rows", replyightlist);
+		return result;
+	}
+	
+	@RequestMapping("/findReplyasklightByID")
+	@ResponseBody
+	public Replyasklight findReplyasklightByID(Integer replylight_id) {
+		Replyasklight replyasklight = replyasklightService.findReplyasklightByID(replylight_id);
+		return replyasklight;
+	}
+	
+	@RequestMapping("/deletereplyasklight")
+	@ResponseBody
+	public Map<String, Object> deleteReplyasklight(Integer[] id)
 	{
 		try {
-			asklightService.deleteAsklight(id);
+			replyasklightService.deleteReplyasklight(id);
 			result.put("success",true);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -604,6 +650,23 @@ public class ManagerController {
 		}
 		return result;
 	}
+	
+	@RequestMapping("/updateReplyasklight")
+	@ResponseBody
+	public Map<String, Object> updateReplyasklight(Replyasklight replyasklight) {
+		try {
+			replyasklightService.updateReplyasklight(replyasklight);
+			result.put("success", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result.put("success", false);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	
+	
 	
 	
 	
