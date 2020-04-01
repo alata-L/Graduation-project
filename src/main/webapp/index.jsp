@@ -70,13 +70,14 @@
 		       	 <li><a href="javascript:void(0)" pageUrl="DianlustatusManage.jsp">电路状态类型管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="OrderofrepairManage.jsp">报修订单管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="ReplyrepairManage.jsp">报修回复管理</a></li>
-		       	 <li><a href="javascript:void(0)" pageUrl="AsklightManage.jsp">灯光申请回复管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="AsklightManage.jsp">灯光申请管理</a></li>
+		       	 <li><a href="javascript:void(0)" pageUrl="ReplyasklightManage.jsp">灯光申请回复管理</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="categroy.jsp">权限管理</a></li>
 		       </ul>
 		    </div>   
 		    <div title="我的灯光管理" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">   
 		       <ul>
-		         <li><a href="javascript:void(0)" pageUrl="customermanage.jsp">申请例外灯光</a></li>
+		         <li><a href="javascript:void(0)" pageUrl="Asklight.jsp">申请例外灯光</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="Askrepair.jsp">申请报修</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="Myrepairandrequest.jsp">查看我的</a></li>
 		       	 <li><a href="javascript:void(0)" pageUrl="xiu'gai'm">修改密码</a></li>
